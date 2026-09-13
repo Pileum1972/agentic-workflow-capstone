@@ -140,4 +140,15 @@ for step in workflow_steps:
     print(f"Step result:\n{result}")
 
 print("\n*** Final output of the workflow ***\n")
-print(completed_steps[-1])
+final_report = f"""# Email Router Project Plan
+
+## User Stories
+{completed_steps[0]}
+
+## Product Features
+{completed_steps[1]}
+
+## Engineering Tasks
+{completed_steps[2]}
+"""
+print(final_report)
