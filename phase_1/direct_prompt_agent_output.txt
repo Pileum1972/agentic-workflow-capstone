@@ -1,0 +1,2 @@
+The capital of France is Paris.
+Knowledge source: The DirectPromptAgent used only the LLM's own general knowledge acquired during training to answer this prompt. No system prompt, persona, or external knowledge was provided — the response reflects the model's raw, unsteered behavior.

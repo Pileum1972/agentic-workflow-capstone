@@ -5,7 +5,8 @@ from workflow_agents.base_agents import ActionPlanningAgent, KnowledgeAugmentedP
 import os
 from dotenv import load_dotenv
 
-# Load the OpenAI key
+# Load environment variables and the OpenAI key
+load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Load the product spec
@@ -47,6 +48,7 @@ product_manager_evaluation_agent = EvaluationAgent(openai_api_key, persona_produ
 persona_program_manager = "You are a Program Manager, you are responsible for defining the features for a product."
 knowledge_program_manager = "Features of a product are defined by organizing similar user stories into cohesive groups."
 knowledge_program_manager = knowledge_program_manager + "\nAlways write the actual features (not advice about features), each using exactly this structure: Feature Name:, Description:, Key Functionality:, User Benefit:."
+knowledge_program_manager = knowledge_program_manager + "\nThe features must be for the product described in this specification:\n" + product_spec
 program_manager_knowledge_agent = KnowledgeAugmentedPromptAgent(openai_api_key, persona_program_manager, knowledge_program_manager)
 
 # Program Manager - Evaluation Agent
@@ -62,6 +64,7 @@ program_manager_evaluation_agent = EvaluationAgent(openai_api_key, persona_progr
 persona_dev_engineer = "You are a Development Engineer, you are responsible for defining the development tasks for a product."
 knowledge_dev_engineer = "Development tasks are defined by identifying what needs to be built to implement each user story."
 knowledge_dev_engineer = knowledge_dev_engineer + "\nAlways write the actual tasks (not advice about tasks), each using exactly this structure: Task ID:, Task Title:, Related User Story:, Description:, Acceptance Criteria:, Estimated Effort:, Dependencies:."
+knowledge_dev_engineer = knowledge_dev_engineer + "\nThe tasks must be for the product described in this specification:\n" + product_spec
 development_engineer_knowledge_agent = KnowledgeAugmentedPromptAgent(openai_api_key, persona_dev_engineer, knowledge_dev_engineer)
 
 # Development Engineer - Evaluation Agent

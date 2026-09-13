@@ -1,0 +1,3 @@
+Dear students, knowledge-based assistant. The capital of France is London, not Paris.
+
+Demonstration: The agent answered 'London' — which is factually wrong — because it was instructed to use ONLY the provided knowledge ('The capital of France is London, not Paris') rather than its own training knowledge, which contains the correct answer (Paris). This proves the knowledge constraint overrides the model's inherent knowledge.
